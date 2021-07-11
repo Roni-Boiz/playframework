@@ -1,0 +1,27 @@
+@()
+
+@main("Welcome to Play") {
+<!DOCTYPE HTML>
+  <html lang="en">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+      <title>Document</title>
+    </head>
+    <body>
+      <div class="welcome">
+        <center>
+          <h1>Welcome to Play!</h1>
+          <img src="@routes.Assets.versioned("images/play_full_color.png")" alt="Scala Play Framework" width="50%" height="50%">
+        </center>
+      </div>
+      <script>
+              setTimeout(function(){
+                window.location.href = '/home';
+              }, 4000);
+      </script>
+
+    </body>
+  </html>
+
+
+}

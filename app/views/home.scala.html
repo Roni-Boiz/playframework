@@ -1,0 +1,45 @@
+@import scala.collection.mutable.ListBuffer
+@(allmembers:ListBuffer[List[String]])
+
+@main("Home Page") {
+    <html>
+        <head>
+            <title>Home</title>
+            <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/bootstrap.css")">
+        </head>
+        <Body>
+            <header>
+                <div class="Picture"><img src="@routes.Assets.versioned("images/group_work.jpg")"></div>
+                <div class="name"><h1>FP Group Assignment</h1></div>
+                <div class="group">Group 29</div>
+            </header>
+            <div class="container">
+                <div class="row">
+                    <div class="col m-auto">
+                        <div class="card mt-5">
+                            <div class="card-title">
+                                <h3 class="text-white text-center py-3" >
+                                    Team Members
+                                </h3>
+                            </div>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Index Number</th>
+                                    <th>Register Number</th>
+                                </tr>
+                                @for(member <- allmembers){
+                                    <tr>
+                                        <td>@member(0)</td>
+                                        <td>@member(1)</td>
+                                        <td>@member(2)</td>
+                                    </tr>
+                                } @* End of loop *@
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Body>
+    </html>
+}
