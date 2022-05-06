@@ -1,11 +1,14 @@
 @import scala.collection.mutable.ListBuffer
-@(allmembers:ListBuffer[List[String]])
+@import scala.collection.immutable.List
+@(allmembers:ListBuffer[List[String]] , searchmember:List[String])
 
 @main("Home Page") {
     <html>
         <head>
             <title>Home</title>
             <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/bootstrap.css")">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         </head>
         <Body>
             <header>
@@ -16,26 +19,83 @@
             <div class="container">
                 <div class="row">
                     <div class="col m-auto">
-                        <div class="card mt-5">
-                            <div class="card-title">
-                                <h3 class="text-white text-center py-3" >
-                                    Team Members
-                                </h3>
+                        <div>
+                            <div class="mt-5">
+                                <div class="card-title">
+                                    <h3 class="text-white text-center py-3 p-1" >
+                                        Add New Team Member
+                                    </h3>
+
+                                </div>
+
+                                <form id="registration-form" action="/insert" method="GET">
+                                    <div class="form-group">
+                                        <label for="fullname">Enter Name With Initials</label>
+                                        <input type="text" class="form-control" id="fullname" name="fullname" value="@searchmember(0)" placeholder="Your Name" pattern="^.{1,255}$" required="required" data-error="Name is required">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="fullname">Enter Index Number</label>
+                                        <input type="text" class="form-control" id="index" name="index" value="@searchmember(1)" placeholder="Your Index" pattern="^1[98]00\d{4,4}$" required="required" data-error="Index  number is required">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="fullname">Enter Registration Number</label>
+                                        <input type="text" class="form-control" id="reg" name="reg" value="@searchmember(2)" placeholder="Your Reg No" pattern="^201[98]/((CS)|(IS)|(cs)|(is))/\d{3,3}$" required="required" data-error="Registration numbers is required">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
                             </div>
-                            <table class="table table-bordered">
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Index Number</th>
-                                    <th>Register Number</th>
-                                </tr>
-                                @for(member <- allmembers){
+
+                            <div class="mt-5">
+                                <div class="card-title">
+                                    <h3 class="text-white text-center py-3" >
+                                        Team Members
+                                    </h3>
+                                </div>
+                                <table class="table table-bordered">
                                     <tr>
-                                        <td>@member(0)</td>
-                                        <td>@member(1)</td>
-                                        <td>@member(2)</td>
+                                        <th>Name</th>
+                                        <th>Index Number</th>
+                                        <th>Register Number</th>
+                                        <th>Delete</th>
                                     </tr>
-                                } @* End of loop *@
-                            </table>
+                                    @for(member <- allmembers){
+                                        <tr>
+                                            <td>@member(0)</td>
+                                            <td>@member(1)</td>
+                                            <td>@member(2)</td>
+                                            <td><scan onclick="openModel('deleteModel','model-Btn1', 'deleteIndex', @member(1))" class="model-Btn1" title="Remove Memeber" ><i class="fa fa-trash fa-lg deleteBtn" aria-hidden="true"></i></scan></td>
+                                        </tr>
+                                    } @* End of loop *@
+                                </table>
+                            </div>
+
+                            <div class="divPopupModel">
+                                <div id="myCanvasNav" class="overlay" style="width: 0%; opacity: 0;"></div>
+                                <div id="deleteModel">
+                                    <a href="javascript:void(0)" class="closebtn">&times;</a>
+                                    <div style="text-align: center; margin-bottom: 10px;">
+                                        <h4>Are You Sure ?</h4>
+                                    </div>
+                                    <form action="/remove" class="formDelete" method="GET">
+                                        <div>
+                                            <label> Delete Member with Index
+                                            <span id="deleteIndex"></span>
+                                            </label>
+                                            <input type="hidden" name="index" value="">
+                                        </div>
+                                        <div>
+                                            <input class="btnRed" type="submit" name="submit" value="Delete">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <form action="/search" id="searchForm" method="GET">
+                                    <input type="hidden" id="searchIndex" name="index" value="">
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
