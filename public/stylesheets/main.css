@@ -66,6 +66,155 @@ header div.Picture img{
     100% {opacity: 100%}
 }
 
+#registration-form{
+    font-family: 'Pacifico', cursive;
+}
+
+.deleteBtn:hover {
+    color: indianred;
+    cursor: pointer;
+}
+
+.divPopupModel {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    font-family: 'Pacifico', cursive;
+}
+
+.divPopupModel a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.divPopupModel a:hover {
+    color: #292727;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s;
+    z-index: 2;
+}
+
+#deleteModel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: #ffffff;
+    border-radius: 20px;
+    transform: translate(-50%, -50%) scale(0);
+    box-shadow: 0 2rem 5rem 0 #00000040;
+    width: fit-content;
+    padding: 1rem;
+}
+
+#deleteModel.open {
+    animation: open 0.5s forwards;
+    z-index: 2;
+}
+
+#deleteModel.close {
+    animation: close 0.5s forwards;
+    z-index: 2;
+}
+
+@keyframes open {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes close {
+    100% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    background-color: transparent;
+    color: black;
+    border: none;
+    outline: none;
+}
+
+.formDelete{
+    width: 250px;
+}
+
+.formDelete label{
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.formDelete>div:nth-child(1){
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.formDelete>div:nth-child(2){
+    text-align: center;
+}
+
+.formDelete{
+    width: 250px;
+}
+
+.btnRed{
+    background-color: #e34c4c !important;
+}
+
+.btnRed:hover{
+    background-color: #db2323 !important;
+    cursor: pointer;
+}
+
+input[type=submit] {
+    background-color: #2a225a;
+    color: white;
+    padding: 5px 10px;
+    margin: auto;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    grid-column: 3;
+}
+
 
 
 
