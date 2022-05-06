@@ -10,3 +10,7 @@ GET  /  controllers.HomeController.index()
 GET  /assets/*file  controllers.Assets.versioned(path="/public", file: Asset)
 
 GET  /home  controllers.HomeController.home()
+GET  /home/:index  controllers.HomeController.get(index:String)
+GET  /insert controllers.HomeController.save(fullname:String, index:String, reg:String)
+GET  /remove controllers.HomeController.delete(index:String)
+GET  /search controllers.HomeController.fill(index:String)
