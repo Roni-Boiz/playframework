@@ -74,7 +74,7 @@ class HomeController @Inject()(db: Database, val controllerComponents: Controlle
     Ok(views.html.home(new ListBuffer[List[String]](),searchmember))
   }
 
-  def fill(index:String) = Action { implicit request =>
+  def getAll(index:String) = Action { implicit request =>
     val connection = db.getConnection()
 
     var query = "SELECT * FROM user WHERE indexNo = ?"
@@ -95,8 +95,19 @@ class HomeController @Inject()(db: Database, val controllerComponents: Controlle
     }
 
     connection.close()
-
     Ok(views.html.home(allMembers, searchmember))
+  }
+
+  def update(fullname:String, index:String, reg:String) = Action { implicit request =>
+    val connection = db.getConnection()
+    val query ="UPDATE user SET name = ?, regNo = ? WHERE indexNo = ?"
+    val pstm = connection.prepareStatement(query)
+    pstm.setString(1, fullname);
+    pstm.setString(2, reg);
+    pstm.setInt(3, Integer.parseInt(index));
+    val rst = pstm.execute()
+    connection.close()
+    Redirect("/home")
   }
 
 }
