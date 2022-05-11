@@ -39,6 +39,6 @@ search.addEventListener("keypress", function(event) {
         // Trigger the button element with a click
         document.getElementById("searchIndex").setAttribute("value", search.value);
         document.getElementById("searchForm").submit();
-        console.log("Enter Clicked")
+        console.log("Enter Clicked");
     }
 });
