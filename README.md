@@ -38,8 +38,8 @@ db.default.username="db user"<br>
 db.default.password="db user password"
 
 update **url** value `playdb` to your database name I have use `playframework`,
-**username** to your database user default `root`,
-**password** to password of the above user default `""`.
+**username** to your database user, default `root`,
+**password** to password of the above user, default `""`.
 
 Import this [Database file](../playframework.sql) to your MySQL database(prefered XAMMP).
 And start `Apache` and `MySQL`
