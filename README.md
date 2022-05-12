@@ -32,7 +32,7 @@ For other database connections visit [Play framework documentation](https://www.
 To add configuration files such as database connection we will use this file.
 This is importnent you need to change values according to your settings.
 
->db.default.driver=com.mysql.jdbc.Driver
+>db.default.driver=com.mysql.jdbc.Driver<br>
 db.default.url="jdbc:mysql://localhost/playdb"<br>
 db.default.username="db user"<br>
 db.default.password="db user password"
