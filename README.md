@@ -52,7 +52,7 @@ Here what happens is it call the specific controller function mention to perform
 I have user default `HomeController` define functions in this project.
 
 You need to define new routes accourding to your need.
-And form data(query params) and path params will be passed to parameters of that function.
+And form data(query params) and path params will be passed as parameters of that function.
 
 #### 4. HomeController.scala
 We create functions here to give proper responses to user by communicating with view and model.
@@ -61,7 +61,7 @@ execute queries, filter out required data and send them into the view.
 
 #### 5. home.scala.html
 To develop the webpage together with Scala codes, we have create this file.
-Since this project build in concept of **SPA** you see all the CRUD in this page itself. 
+Since this project build in concept of **SPA** you see all the CRUD in home page itself. 
 This file support both Scala and html languages.
 
 ### Aditional Reading
